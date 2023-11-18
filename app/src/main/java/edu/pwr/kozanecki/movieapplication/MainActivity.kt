@@ -1,14 +1,19 @@
 package edu.pwr.kozanecki.movieapplication
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -37,7 +42,11 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MovieList(movies = SampleData.moviesList)
+                    MovieList(movies = SampleData.moviesList) {movie ->
+                        val intent = Intent(this, MovieDetailsActivity::class.java)
+                        intent.putExtra("index", movie.title)
+                        startActivity(intent)
+                    }
                 }
             }
         }
@@ -47,18 +56,20 @@ class MainActivity : ComponentActivity() {
 data class Movie(val title: String, val originalTitle: String, val imageSrc: Int)
 
 @Composable
-fun MovieCard(movie: Movie, index: Int) {
-    Row {
-        Text(text = "$index.",
+fun MovieCard(movie: Movie, index: Int, onCardClick: () -> Unit) {
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable { onCardClick() }) {
+        Text(text = String.format("%02d.", index),
             modifier = Modifier.padding(start = 6.dp),
             style = MaterialTheme.typography.titleMedium)
         Image(
             painter = painterResource(id = movie.imageSrc),
             contentDescription = "Photo",
             modifier = Modifier
-                .padding(
-                    vertical = 10.dp
-                ).size(100.dp))
+                .padding(vertical = 10.dp)
+                .size(100.dp))
         Column {
             Text(
                 text = movie.title,
@@ -71,26 +82,26 @@ fun MovieCard(movie: Movie, index: Int) {
     }
 }
 
-@Preview
-@Composable
-fun PreviewMovieCard() {
-    MovieCard(movie = Movie("Nietykalni", "Intouchables 2011", R.drawable.nietykalni), index = 1)
-}
+//@Preview
+//@Composable
+//fun PreviewMovieCard() {
+//    MovieCard(movie = Movie("Nietykalni", "Intouchables 2011", R.drawable.nietykalni), index = 1)
+//}
 
 @Composable
-fun MovieList(movies: List<Movie>) {
+fun MovieList(movies: List<Movie>, onCardClick: (Movie) -> Unit) {
     LazyColumn {
         itemsIndexed(movies) {index, movie ->
-            MovieCard(movie = movie, index = index + 1)
+            MovieCard(movie = movie, index = index + 1, onCardClick = {onCardClick(movie)})
             Divider(color = Color.Gray, thickness = 1.dp)
         }
     }
 }
 
-@Preview
-@Composable
-fun PreviewMovieList() {
-    MovieApplicationTheme {
-        MovieList(movies = SampleData.moviesList)
-    }
-}
+//@Preview
+//@Composable
+//fun PreviewMovieList() {
+//    MovieApplicationTheme {
+//        MovieList(movies = SampleData.moviesList)
+//    }
+//}
