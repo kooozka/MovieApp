@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     MovieList(movies = SampleData.moviesList) {movie ->
                         val intent = Intent(this, MovieDetailsActivity::class.java)
-                        intent.putExtra("index", movie.title)
+                        intent.putExtra("index", movie)
                         startActivity(intent)
                     }
                 }
@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-data class Movie(val title: String, val originalTitle: String, val imageSrc: Int)
+data class Movie(val title: String, val originalTitle: String, val imageSrc: Int, val description: String)
 
 @Composable
 fun MovieCard(movie: Movie, index: Int, onCardClick: () -> Unit) {
@@ -89,10 +89,10 @@ fun MovieCard(movie: Movie, index: Int, onCardClick: () -> Unit) {
 //}
 
 @Composable
-fun MovieList(movies: List<Movie>, onCardClick: (Movie) -> Unit) {
+fun MovieList(movies: List<Movie>, onCardClick: (Int) -> Unit) {
     LazyColumn {
         itemsIndexed(movies) {index, movie ->
-            MovieCard(movie = movie, index = index + 1, onCardClick = {onCardClick(movie)})
+            MovieCard(movie = movie, index = index + 1, onCardClick = {onCardClick(index)})
             Divider(color = Color.Gray, thickness = 1.dp)
         }
     }
