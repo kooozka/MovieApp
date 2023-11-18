@@ -7,12 +7,14 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.absolutePadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -45,18 +47,26 @@ class MainActivity : ComponentActivity() {
 data class Movie(val title: String, val originalTitle: String, val imageSrc: Int)
 
 @Composable
-fun MovieCard(movie: Movie) {
-    Row(modifier = Modifier.padding(all = 8.dp)) {
-        Image(painter = painterResource(id = movie.imageSrc), contentDescription = "Main picture",
-            modifier = Modifier.size(50.dp))
-        Spacer(modifier = Modifier.width(10.dp))
+fun MovieCard(movie: Movie, index: Int) {
+    Row {
+        Text(text = "$index.",
+            modifier = Modifier.padding(start = 6.dp),
+            style = MaterialTheme.typography.titleMedium)
+        Image(
+            painter = painterResource(id = movie.imageSrc),
+            contentDescription = "Photo",
+            modifier = Modifier
+                .padding(
+                    vertical = 10.dp
+                ).size(100.dp))
         Column {
             Text(
                 text = movie.title,
+                modifier = Modifier.padding(top = 5.dp),
                 style = MaterialTheme.typography.titleLarge
             )
             Text(text = movie.originalTitle,
-                style = MaterialTheme.typography.titleMedium)
+                style = MaterialTheme.typography.titleSmall)
         }
     }
 }
@@ -64,14 +74,14 @@ fun MovieCard(movie: Movie) {
 @Preview
 @Composable
 fun PreviewMovieCard() {
-    MovieCard(movie = Movie("Nietykalni", "Intouchables 2011", R.drawable.nietykalni))
+    MovieCard(movie = Movie("Nietykalni", "Intouchables 2011", R.drawable.nietykalni), index = 1)
 }
 
 @Composable
 fun MovieList(movies: List<Movie>) {
     LazyColumn {
-        items(movies) { movie ->
-            MovieCard(movie)
+        itemsIndexed(movies) {index, movie ->
+            MovieCard(movie = movie, index = index + 1)
             Divider(color = Color.Gray, thickness = 1.dp)
         }
     }

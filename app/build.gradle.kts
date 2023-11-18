@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "edu.pwr.kozanecki.movieapplication"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "edu.pwr.kozanecki.movieapplication"
