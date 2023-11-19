@@ -53,7 +53,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-data class Movie(val title: String, val originalTitle: String, val imageSrc: Int, val description: String)
+data class Movie(val title: String, val originalTitle: String, val imageSrc: Int, val description: String, val scenes: List<Int>)
 
 @Composable
 fun MovieCard(movie: Movie, index: Int, onCardClick: () -> Unit) {
