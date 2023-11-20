@@ -4,11 +4,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -48,7 +51,7 @@ class MovieDetailsActivity : ComponentActivity() {
                     val index =  intent.getIntExtra("index", -1)
                     Column {
                         MovieDetails(movie = SampleData.moviesList[index])
-                        Buttons(showScenes = true, onScenesClick = { showScenes = true }, onActorsClick = {showScenes = false})
+                        Buttons(onScenesClick = { showScenes = true }, onActorsClick = {showScenes = false})
                         if (showScenes) DisplayScenes(movieScenes = SampleData.moviesList[index].scenes) else Text(text = "gowno")
                     }
                 }
@@ -59,7 +62,6 @@ class MovieDetailsActivity : ComponentActivity() {
 
 @Composable
 fun MovieDetails(movie: Movie) {
-    Column {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -81,19 +83,41 @@ fun MovieDetails(movie: Movie) {
             )
         }
         Divider(color = Color.Gray, thickness = 1.dp)
-    }
 }
 
 @Composable
-fun Buttons(showScenes: Boolean, onScenesClick: () -> Unit, onActorsClick: () -> Unit) {
-    Row (modifier = Modifier.padding(16.dp)) {
-        Button(onClick = { onScenesClick }
+fun Buttons(onScenesClick: () -> Unit, onActorsClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            //.padding(bottom = 8.dp),
+    ) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .clickable { onScenesClick() }
+                .border(1.dp, Color.Gray)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+
         ) {
-            Text(text = "Scenes")
+            Text(text = "Scenes",
+                style = MaterialTheme.typography.titleMedium)
         }
-        Button(onClick = { onActorsClick }
+
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .clickable { onActorsClick() }
+                .border(1.dp, Color.Gray)
+                .padding(16.dp),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+
         ) {
-            Text(text = "Actors")
+            Text(text = "Actors",
+                style = MaterialTheme.typography.titleMedium)
         }
     }
 }
@@ -104,12 +128,14 @@ fun DisplayScenes(movieScenes: List<Int>) {
         columns = GridCells.Fixed(3),
 //        contentPadding = PaddingValues(16.dp),
 //        horizontalArrangement = Arrangement.spacedBy(16.dp),
-//        verticalArrangement = Arrangement.spacedBy(16.dp)
+//       verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(movieScenes.size) { index ->
             Box(
                 contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .fillMaxSize()
+                    .border(1.dp, Color.Black)
             ) {
                 Image(
                     painter = painterResource(id = movieScenes[index]),
