@@ -1,4 +1,5 @@
-package edu.pwr.kozanecki.movieapplication
+package edu.pwr.kozanecki.movieapplication.data
+import edu.pwr.kozanecki.movieapplication.R
 
 object SampleData {
     private val UntouchablesActors = listOf(
@@ -102,65 +103,149 @@ object SampleData {
 
     private val BogowieActors = listOf(
         Actor(
-            "Francois",
-            "Cluzet",
-            "Philippe",
-            R.drawable.francois_cluzet
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
         )
     )
 
     private val ChlopakiNiePlaczaActors = listOf(
         Actor(
-            "Francois",
-            "Cluzet",
-            "Philippe",
-            R.drawable.francois_cluzet
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
         )
     )
 
 
     private val GladiatorActors = listOf(
         Actor(
-            "Francois",
-            "Cluzet",
-            "Philippe",
-            R.drawable.francois_cluzet
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
         )
     )
 
     private val ScentOfAWomanActors = listOf(
         Actor(
-            "Francois",
-            "Cluzet",
-            "Philippe",
-            R.drawable.francois_cluzet
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
         )
     )
 
     private val FourWeddingsAndAFunrealActors = listOf(
         Actor(
-            "Francois",
-            "Cluzet",
-            "Philippe",
-            R.drawable.francois_cluzet
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
         )
     )
 
     private val TheWolfOfWallStreetActors = listOf(
         Actor(
-            "Francois",
-            "Cluzet",
-            "Philippe",
-            R.drawable.francois_cluzet
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
         )
     )
 
     private val JokerActors = listOf(
         Actor(
-            "Francois",
-            "Cluzet",
-            "Philippe",
-            R.drawable.francois_cluzet
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
+        ),
+        Actor(
+            "Dummy",
+            "Actor",
+            "Goat",
+            R.drawable.goat_photo
         )
     )
 
@@ -194,7 +279,7 @@ object SampleData {
             "2014",
             R.drawable.bogowie,
             "Profesor Zbigniew Religa, utalentowany kardiochirurg wierzy, że jest w stanie dokonać przeszczepu serca. Nie poddaje się mimo wielu nieudanych operacji.",
-            listOf(),
+            listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
             BogowieActors
         ),
         Movie(
@@ -202,14 +287,15 @@ object SampleData {
             "2000",
             R.drawable.chlopaki_nie_placza,
             "Kuba, młody skrzypek, trafia w sam środek gangsterskich porachunków.",
-            listOf(),
+            listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
             ChlopakiNiePlaczaActors
-        ),Movie(
+        ),
+        Movie(
             "Gladiator",
             "2000",
             R.drawable.gladiator,
             "Generał Maximus - prawa ręka cesarza, szczęśliwy mąż i ojciec - w jednej chwili traci wszystko. Jako niewolnik-gladiator musi walczyć na arenie o przeżycie.",
-            listOf(),
+            listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
             GladiatorActors
         ),
         Movie(
@@ -217,7 +303,7 @@ object SampleData {
             "Scent of a Woman 1992",
             R.drawable.zapach_kobiety,
             "Niewidomy emerytowany pułkownik Frank Slade staje się najlepszym nauczycielem życia dla nieśmiałego studenta.",
-            listOf(),
+            listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
             ScentOfAWomanActors
         ),
         Movie(
@@ -225,7 +311,7 @@ object SampleData {
             "Four Weddings and a Funeral",
             R.drawable.cztery_wesela_i_pogrzeb,
             "Charles jest częstym gościem na weselach przyjaciół. Nie zamierza się żenić do czasu, aż poznaje piękną Amerykankę.",
-            listOf(),
+            listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
             FourWeddingsAndAFunrealActors
         ),
         Movie(
@@ -233,7 +319,7 @@ object SampleData {
             "The Wolf of Wall Street",
             R.drawable.wilk_z_wall_street,
             "Historia Jordana Belforta, brokera, którego błyskawiczna droga na szczyt i rozrzutny styl życia wzbudziły zainteresowanie FBI.",
-            listOf(),
+            listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
             TheWolfOfWallStreetActors
         ),
         Movie(
@@ -241,7 +327,7 @@ object SampleData {
             "2019",
             R.drawable.joker,
             "Strudzony życiem komik popada w obłęd i staje się psychopatycznym mordercą.",
-            listOf(),
+            listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
             JokerActors
         ),
     )
