@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -15,6 +16,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.absoluteOffset
 import androidx.compose.foundation.layout.absolutePadding
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -27,10 +29,18 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Divider
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -74,7 +84,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-data class Movie(val title: String, val originalTitle: String, val imageSrc: Int, val description: String, val scenes: List<Int>)
+data class Movie(val title: String, val originalTitle: String, val imageSrc: Int, val description: String, val scenes: List<Int>, val actors: List<Actor>)
+data class Actor(val firstName: String, val secondName: String, val character: String, val imageSrc: Int)
 
 @Composable
 fun MovieCard(movie: Movie, index: Int, navController: NavController) {
@@ -82,7 +93,7 @@ fun MovieCard(movie: Movie, index: Int, navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .clickable { navController.navigate("movieDetails/$index") }) {
-        Text(text = String.format("%02d.", index),
+        Text(text = String.format("%02d.", index + 1),
             modifier = Modifier.padding(start = 6.dp),
             style = MaterialTheme.typography.titleMedium)
         Image(
@@ -113,34 +124,56 @@ fun MovieList(movies: List<Movie>, navController: NavController) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieListScreen(navController: NavController) {
-    Surface(
-        modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
-    ) {
-        MovieList(movies = SampleData.moviesList, navController = navController)
+        Scaffold(
+            topBar = {
+                TopAppBar(
+                    title = { Text(text = "Movie List") },
+                    colors = TopAppBarDefaults.mediumTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primaryContainer,
+                        titleContentColor = MaterialTheme.colorScheme.primary)
+                )
+            }
+        ) {innerPadding -> Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            MovieList(movies = SampleData.moviesList, navController = navController)
+        }
     }
 }
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieDetailsScreen(index: Int) {
-    Log.d("INDEX", index.toString())
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text(text = "Movie List") },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.primary)
+            )
+        }
+    ) {innerPadding -> Surface(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(innerPadding),
+        color = MaterialTheme.colorScheme.background
+    ) {
     var showScenes by remember { mutableStateOf(true) }
-    MovieApplicationTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
             Column {
                 MovieDetails(movie = SampleData.moviesList[index])
                 Buttons(
                     onScenesClick = { showScenes = true },
                     onActorsClick = { showScenes = false })
-                if (showScenes) DisplayScenes(movieScenes = SampleData.moviesList[index].scenes) else Text(
-                    text = "gowno"
+                if (showScenes) DisplayScenes(movieScenes = SampleData.moviesList[index].scenes) else DisplayActors(
+                    actors = SampleData.moviesList[index].actors
                 )
             }
         }
@@ -150,29 +183,64 @@ fun MovieDetailsScreen(index: Int) {
 @Composable
 fun DisplayScenes(movieScenes: List<Int>) {
     LazyVerticalGrid(
-        columns = GridCells.Fixed(3)
+        columns = GridCells.Fixed(3),
 //        contentPadding = PaddingValues(16.dp),
-//        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalArrangement = Arrangement.spacedBy(10.dp)
 //       verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
         items(movieScenes.size) { index ->
-            Log.d("DisplayScenes", "Loading image for index: $index, resource: ${movieScenes[index]}")
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .border(1.dp, Color.Black)
-            ) {
-//                Row {
-//                    Text(text = index.toString())
-//                }
+//            Box(
+//                contentAlignment = Alignment.Center,
+//                modifier = Modifier
+//                    .fillMaxSize()
+//                    .size(180.dp)
+//                    .border(1.dp, Color.Black)
+//            ) {
+////                Row {
+////                    Text(text = index.toString())
+////                }
                 Image(
                     painter = painterResource(id = movieScenes[index]),
                     contentDescription = "Photo $index",
-                    modifier = Modifier.fillMaxSize()
+                    modifier = Modifier
+                        .size(135.dp)
+                        .fillMaxSize()
                 )
             }
 
+        }
+    }
+
+
+@Composable
+fun DisplayActors(actors: List<Actor>) {
+    LazyColumn {
+        items(actors) {actor ->
+            ActorCard(actor = actor)
+            Divider(color = Color.Gray, thickness = 1.dp)
+        }
+    }
+}
+
+@Composable
+fun ActorCard(actor: Actor) {
+    Row (
+        modifier = Modifier
+            .fillMaxWidth()) {
+        Image(
+            painter = painterResource(id = actor.imageSrc),
+            contentDescription = "Photo ${actor.firstName} ${actor.secondName}",
+            modifier = Modifier
+                .padding(vertical = 10.dp)
+                .size(80.dp))
+        Column {
+            Text(
+                text = actor.firstName + " " + actor.secondName,
+                modifier = Modifier.padding(top = 5.dp),
+                style = MaterialTheme.typography.titleLarge
+            )
+            Text(text = actor.character,
+                style = MaterialTheme.typography.titleSmall)
         }
     }
 }
@@ -199,7 +267,7 @@ fun MovieDetails(movie: Movie) {
             style = MaterialTheme.typography.bodyLarge
         )
     }
-    Divider(color = Color.Gray, thickness = 1.dp)
+    //Divider(color = Color.Gray, thickness = 1.dp)
 }
 
 @Composable
@@ -207,7 +275,7 @@ fun Buttons(onScenesClick: () -> Unit, onActorsClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-        //.padding(bottom = 8.dp),
+            .padding(bottom = 8.dp),
     ) {
         Column(
             modifier = Modifier
