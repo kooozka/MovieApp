@@ -1,7 +1,7 @@
 package edu.pwr.kozanecki.movieapplication.data
 import edu.pwr.kozanecki.movieapplication.R
 
-object SampleData {
+object Data {
     private val UntouchablesActors = listOf(
         Actor(
             "Francois",

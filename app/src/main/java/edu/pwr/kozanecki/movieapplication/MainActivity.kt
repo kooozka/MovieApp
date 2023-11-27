@@ -8,8 +8,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import edu.pwr.kozanecki.movieapplication.composables.MovieDetailsScreen
-import edu.pwr.kozanecki.movieapplication.composables.MoviesListScreen
+import edu.pwr.kozanecki.movieapplication.composables.movieDetailsScreen.MovieDetailsScreen
+import edu.pwr.kozanecki.movieapplication.composables.movieListScreen.MoviesListScreen
 import edu.pwr.kozanecki.movieapplication.ui.theme.MovieApplicationTheme
 
 class MainActivity : ComponentActivity() {

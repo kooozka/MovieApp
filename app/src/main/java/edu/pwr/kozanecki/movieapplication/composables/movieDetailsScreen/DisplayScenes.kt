@@ -1,4 +1,4 @@
-package edu.pwr.kozanecki.movieapplication.composables
+package edu.pwr.kozanecki.movieapplication.composables.movieDetailsScreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement

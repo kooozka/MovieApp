@@ -50,9 +50,9 @@ package edu.pwr.kozanecki.movieapplication
 //                ) {
 //                    val index =  intent.getIntExtra("index", -1)
 //                    Column {
-//                        MovieDetails(movie = SampleData.moviesList[index])
+//                        MovieDetails(movie = Data.moviesList[index])
 //                        Buttons(onScenesClick = { showScenes = true }, onActorsClick = {showScenes = false})
-//                        if (showScenes) DisplayScenes(movieScenes = SampleData.moviesList[index].scenes) else Text(text = "gowno")
+//                        if (showScenes) DisplayScenes(movieScenes = Data.moviesList[index].scenes) else Text(text = "gowno")
 //                    }
 //                }
 //            }
