@@ -256,7 +256,8 @@ object Data {
             R.drawable.nietykalni,
             "Sparaliżowany milioner zatrudnia do opieki młodego chłopaka z przedmieścia, który właśnie wyszedł z więzienia.",
             listOf(R.drawable.nietykalni_1, R.drawable.nietykalni_2, R.drawable.nietykalni_3, R.drawable.nietykalni_4, R.drawable.nietykalni_5, R.drawable.nietykalni_6, R.drawable.nietykalni_7, R.drawable.nietykalni_8, R.drawable.nietykalni_9),
-            UntouchablesActors
+            UntouchablesActors,
+            listOf(R.raw.nietykalni_trailer, R.raw.nietykalni_2)
         ),
         Movie(
             "Forrest Gump",
@@ -264,7 +265,8 @@ object Data {
             R.drawable.forrest_gump,
             "Historia życia Forresta, chłopca o niskim ilorazie inteligencji z niedowładem kończyn, który staje się miliarderem i bohaterem wojny w Wietnamie.",
             listOf(R.drawable.forrest_1, R.drawable.forrest_2, R.drawable.forrest_3, R.drawable.forrest_4, R.drawable.forrest_5, R.drawable.forrest_6, R.drawable.forrest_7, R.drawable.forrest_8, R.drawable.forrest_9),
-            ForrestGumpActors
+            ForrestGumpActors,
+            listOf(R.raw.forrest_gump_trailer)
         ),
         Movie(
             "Skazani na Shawshank",
@@ -272,7 +274,8 @@ object Data {
             R.drawable.skazani_na_shawshank,
             "Adaptacja opowiadania Stephena Kinga. Niesłusznie skazany na dożywocie bankier, stara się przetrwać w brutalnym, więziennym świecie.",
             listOf(R.drawable.skazani_1, R.drawable.skazani_2, R.drawable.skazani_3, R.drawable.skazani_4, R.drawable.skazani_5, R.drawable.skazani_6, R.drawable.skazani_7, R.drawable.skazani_8, R.drawable.skazani_9),
-            TheShawshankRedemptionActors
+            TheShawshankRedemptionActors,
+            listOf(R.raw.skazani_na_shawshank_trailer)
         ),
         Movie(
             "Bogowie",
@@ -280,7 +283,8 @@ object Data {
             R.drawable.bogowie,
             "Profesor Zbigniew Religa, utalentowany kardiochirurg wierzy, że jest w stanie dokonać przeszczepu serca. Nie poddaje się mimo wielu nieudanych operacji.",
             listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
-            BogowieActors
+            BogowieActors,
+            listOf()
         ),
         Movie(
             "Chłopaki nie płaczą",
@@ -288,7 +292,8 @@ object Data {
             R.drawable.chlopaki_nie_placza,
             "Kuba, młody skrzypek, trafia w sam środek gangsterskich porachunków.",
             listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
-            ChlopakiNiePlaczaActors
+            ChlopakiNiePlaczaActors,
+            listOf()
         ),
         Movie(
             "Gladiator",
@@ -296,7 +301,8 @@ object Data {
             R.drawable.gladiator,
             "Generał Maximus - prawa ręka cesarza, szczęśliwy mąż i ojciec - w jednej chwili traci wszystko. Jako niewolnik-gladiator musi walczyć na arenie o przeżycie.",
             listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
-            GladiatorActors
+            GladiatorActors,
+            listOf()
         ),
         Movie(
             "Zapach kobiety",
@@ -304,7 +310,8 @@ object Data {
             R.drawable.zapach_kobiety,
             "Niewidomy emerytowany pułkownik Frank Slade staje się najlepszym nauczycielem życia dla nieśmiałego studenta.",
             listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
-            ScentOfAWomanActors
+            ScentOfAWomanActors,
+            listOf()
         ),
         Movie(
             "Cztery Wesela i Pogrzeb",
@@ -312,7 +319,8 @@ object Data {
             R.drawable.cztery_wesela_i_pogrzeb,
             "Charles jest częstym gościem na weselach przyjaciół. Nie zamierza się żenić do czasu, aż poznaje piękną Amerykankę.",
             listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
-            FourWeddingsAndAFunrealActors
+            FourWeddingsAndAFunrealActors,
+            listOf()
         ),
         Movie(
             "Wilk z Wall Street",
@@ -320,7 +328,8 @@ object Data {
             R.drawable.wilk_z_wall_street,
             "Historia Jordana Belforta, brokera, którego błyskawiczna droga na szczyt i rozrzutny styl życia wzbudziły zainteresowanie FBI.",
             listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
-            TheWolfOfWallStreetActors
+            TheWolfOfWallStreetActors,
+            listOf()
         ),
         Movie(
             "Joker",
@@ -328,7 +337,8 @@ object Data {
             R.drawable.joker,
             "Strudzony życiem komik popada w obłęd i staje się psychopatycznym mordercą.",
             listOf(R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo, R.drawable.goat_photo),
-            JokerActors
+            JokerActors,
+            listOf()
         ),
     )
 }

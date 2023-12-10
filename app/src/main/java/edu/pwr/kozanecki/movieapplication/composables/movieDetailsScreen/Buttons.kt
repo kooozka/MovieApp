@@ -19,7 +19,14 @@ import androidx.compose.ui.unit.dp
 import edu.pwr.kozanecki.movieapplication.R
 
 @Composable
-fun Buttons(onScenesClick: () -> Unit, onActorsClick: () -> Unit, isShowScenes: Boolean) {
+fun Buttons(
+    onScenesClick: () -> Unit,
+    onActorsClick: () -> Unit,
+    onVideosClick: () -> Unit,
+    isShowScenes: Boolean,
+    isShowCast: Boolean,
+    isShowVideos: Boolean
+) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -53,7 +60,20 @@ fun Buttons(onScenesClick: () -> Unit, onActorsClick: () -> Unit, isShowScenes: 
                 Text(text = "Actors",
                     style = MaterialTheme.typography.titleMedium)
             }
-        } else {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable { onVideosClick() }
+                    .border(1.dp, Color.Gray)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+
+            ) {
+                Text(text = "Videos",
+                    style = MaterialTheme.typography.titleMedium)
+            }
+        } else if (isShowCast) {
             Column(
                 modifier = Modifier
                     .weight(1f)
@@ -81,6 +101,62 @@ fun Buttons(onScenesClick: () -> Unit, onActorsClick: () -> Unit, isShowScenes: 
 
             ) {
                 Text(text = "Actors",
+                    style = MaterialTheme.typography.titleMedium)
+            }
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable { onVideosClick() }
+                    .border(1.dp, Color.Gray)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+
+            ) {
+                Text(text = "Videos",
+                    style = MaterialTheme.typography.titleMedium)
+            }
+        } else {
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable { onScenesClick() }
+                    .border(1.dp, Color.Gray)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+
+            ) {
+                Text(
+                    text = "Scenes",
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable { onActorsClick() }
+                    .border(1.dp, Color.Gray)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+
+            ) {
+                Text(text = "Actors",
+                    style = MaterialTheme.typography.titleMedium)
+            }
+            Column(
+                modifier = Modifier
+                    .background(color = colorResource(id = R . color . my_app_yellow))
+                    .weight(1f)
+                    .clickable { onVideosClick() }
+                    .border(1.dp, Color.Gray)
+                    .padding(16.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+
+            ) {
+                Text(text = "Videos",
                     style = MaterialTheme.typography.titleMedium)
             }
         }
