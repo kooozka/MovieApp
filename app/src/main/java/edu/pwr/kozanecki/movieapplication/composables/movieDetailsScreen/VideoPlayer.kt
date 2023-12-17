@@ -19,7 +19,7 @@ import androidx.media3.ui.PlayerView
 fun VideoPlayer(videos: List<Int>) {
     val context = LocalContext.current
     val exoPlayer = ExoPlayer.Builder(context).build()
-    videos.map { videoId ->  MediaItem.fromUri("android.resource://${context.packageName}/$videoId")}
+    //videos.map { videoId ->  MediaItem.fromUri("android.resource://${context.packageName}/$videoId")}
     exoPlayer.setMediaItems(videos.map { videoId ->  MediaItem.fromUri("android.resource://${context.packageName}/$videoId")})
     exoPlayer.prepare()
 
