@@ -15,6 +15,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import edu.pwr.kozanecki.movieapplication.R
 
@@ -35,7 +36,7 @@ fun Buttons(
         if (isShowScenes) {
             Column(
                 modifier = Modifier
-                    .background(color = colorResource(id = R . color . my_app_yellow))
+                    .background(color = colorResource(id = R.color.my_app_yellow))
                     .weight(1f)
                     .clickable { onScenesClick() }
                     .border(1.dp, Color.Gray)
@@ -44,7 +45,7 @@ fun Buttons(
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
-                Text(text = "Scenes",
+                Text(text = stringResource(R.string.scenes),
                     style = MaterialTheme.typography.titleMedium)
             }
             Column(
@@ -57,7 +58,7 @@ fun Buttons(
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
-                Text(text = "Actors",
+                Text(text = stringResource(R.string.actors),
                     style = MaterialTheme.typography.titleMedium)
             }
             Column(
@@ -70,7 +71,7 @@ fun Buttons(
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
-                Text(text = "Videos",
+                Text(text = stringResource(R.string.videos),
                     style = MaterialTheme.typography.titleMedium)
             }
         } else if (isShowCast) {
@@ -85,13 +86,13 @@ fun Buttons(
 
             ) {
                 Text(
-                    text = "Scenes",
+                    text = stringResource(R.string.scenes),
                     style = MaterialTheme.typography.titleMedium
                 )
             }
             Column(
                 modifier = Modifier
-                    .background(color = colorResource(id = R . color . my_app_yellow))
+                    .background(color = colorResource(id = R.color.my_app_yellow))
                     .weight(1f)
                     .clickable { onActorsClick() }
                     .border(1.dp, Color.Gray)
@@ -100,7 +101,7 @@ fun Buttons(
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
-                Text(text = "Actors",
+                Text(text = stringResource(R.string.actors),
                     style = MaterialTheme.typography.titleMedium)
             }
             Column(
@@ -113,7 +114,7 @@ fun Buttons(
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
-                Text(text = "Videos",
+                Text(text = stringResource(R.string.videos),
                     style = MaterialTheme.typography.titleMedium)
             }
         } else {
@@ -128,7 +129,7 @@ fun Buttons(
 
             ) {
                 Text(
-                    text = "Scenes",
+                    text = stringResource(R.string.scenes),
                     style = MaterialTheme.typography.titleMedium
                 )
             }
@@ -142,12 +143,12 @@ fun Buttons(
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
-                Text(text = "Actors",
+                Text(text = stringResource(R.string.actors),
                     style = MaterialTheme.typography.titleMedium)
             }
             Column(
                 modifier = Modifier
-                    .background(color = colorResource(id = R . color . my_app_yellow))
+                    .background(color = colorResource(id = R.color.my_app_yellow))
                     .weight(1f)
                     .clickable { onVideosClick() }
                     .border(1.dp, Color.Gray)
@@ -156,7 +157,7 @@ fun Buttons(
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
-                Text(text = "Videos",
+                Text(text = stringResource(R.string.videos),
                     style = MaterialTheme.typography.titleMedium)
             }
         }

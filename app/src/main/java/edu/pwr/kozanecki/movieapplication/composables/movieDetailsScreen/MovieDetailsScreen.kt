@@ -10,7 +10,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import edu.pwr.kozanecki.movieapplication.composables.MyTopBar
@@ -27,9 +27,9 @@ fun MovieDetailsScreen(index: Int) {
             .padding(innerPadding),
         color = MaterialTheme.colorScheme.background
     ) {
-        var showScenes by remember { mutableStateOf(true) }
-        var showCast by remember { mutableStateOf(false) }
-        var showVideos by remember { mutableStateOf(false) }
+        var showScenes by rememberSaveable { mutableStateOf(true) }
+        var showCast by rememberSaveable { mutableStateOf(false) }
+        var showVideos by rememberSaveable { mutableStateOf(false) }
         Column {
             MovieDetails(movie = Data.moviesList[index])
             Buttons(

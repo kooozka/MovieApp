@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">MovieApplication</string>
     <string name="title_activity_movie_details">MovieDetailsActivity</string>
+    <string name="scenes">Scenes</string>
+    <string name="actors">Actors</string>
+    <string name="videos">Videos</string>
+    <string name="actor_photo_description">Photo %1$s %2$s</string>
+    <string name="scene_photo_description">Photo %1$s</string>
+    <string name="photo">Photo</string>
 </resources>

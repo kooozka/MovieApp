@@ -13,9 +13,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import edu.pwr.kozanecki.movieapplication.R
 import edu.pwr.kozanecki.movieapplication.data.Actor
 
 @Composable
@@ -35,13 +38,18 @@ fun ActorCard(actor: Actor) {
             .fillMaxWidth()) {
         Image(
             painter = painterResource(id = actor.imageSrc),
-            contentDescription = "Photo ${actor.firstName} ${actor.secondName}",
+            contentDescription = stringResource(
+                R.string.actor_photo_description,
+                actor.firstName,
+                actor.secondName
+            ),
             modifier = Modifier
-                .padding(vertical = 10.dp, horizontal = 6.dp)
-                .size(80.dp))
+                .padding(vertical = 15.dp, horizontal = 6.dp)
+                .size(60.dp, 85.dp)
+                .clip(MaterialTheme.shapes.medium))
         Column {
             Text(
-                text = actor.firstName + " " + actor.secondName,
+                text = "${actor.firstName} ${actor.secondName}",
                 modifier = Modifier.padding(top = 5.dp),
                 style = MaterialTheme.typography.titleLarge
             )

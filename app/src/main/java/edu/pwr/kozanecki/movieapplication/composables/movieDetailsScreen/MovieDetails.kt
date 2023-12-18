@@ -10,8 +10,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import edu.pwr.kozanecki.movieapplication.R
 import edu.pwr.kozanecki.movieapplication.data.Movie
 
 @Composable
@@ -24,10 +27,11 @@ fun MovieDetails(movie: Movie) {
     ) {
         Image(
             painter = painterResource(id = movie.imageSrc),
-            contentDescription = "Photo",
+            contentDescription = stringResource(R.string.photo),
             modifier = Modifier
-                .size(170.dp)
-                .padding(top = 7.dp)
+                .padding(8.dp)
+                .size(120.dp, 170.dp)
+                .clip(MaterialTheme.shapes.medium)
         )
         Text(
             text = movie.description,
